@@ -37,6 +37,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.posts.index') }}">Posts</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.posts.create') }}">Aggiungi Post</a>
+                        </li>
                         @endAuth
                     </ul>
 
@@ -77,6 +80,15 @@
         </nav>
 
         <main class="py-4">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             @yield('content')
         </main>
     </div>

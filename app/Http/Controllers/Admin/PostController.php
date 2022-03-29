@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -37,7 +37,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|min:5|max:50',
+            'image' => 'url|max:255|nullable',
+            'description' => 'required|min:5'
+        ],[
+            'required'=>':attribute il campo è obbligatorio',
+            'image.url'=>'l \'url dell \'immagine è sbagliato',
+            'description.min'=>'Cè una lunghezza minima di caratteri per la descrizione'
+        ]);
+
+        $data = $request->all(); 
+        $post  = Post::create($data);
+        
+        return redirect()->route('admin.posts.show',$post->id);
     }
 
     /**
