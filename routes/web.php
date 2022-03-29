@@ -15,15 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::middleware('auth')
-->namespace('Admin')
-->name('admin.')
-->prefix('admin')
-->group(function(){
 
-    Route::resource('/','HomeController');
+
+Route::middleware('auth')->prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
+    
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('post','PostController'); 
 });
 
-Route::get('{any?}',function(){
-    return view('guests.home');      
-})->where("any",'.*');
+Route::get('{any?}', function () {
+    return view('guest.home');
+})->where('any','.*');
+
+
+
+
+
+

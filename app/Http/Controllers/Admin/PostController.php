@@ -4,16 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Post;
 
-
-class HomeController extends Controller
+class PostController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        /* $posts = Post::All(); */
-       /*  return view('admin.home',compact('posts')); */
-
-       return view('admin.home');
+         $posts = Post::All(); 
+         return view('admin.posts.index',compact('posts')); 
     }
 
     /**
