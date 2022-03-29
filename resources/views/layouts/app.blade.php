@@ -35,7 +35,7 @@
                     <ul class="navbar-nav mr-auto">
                         @Auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.post.index') }}">Posts</a>
+                            <a class="nav-link" href="{{ route('admin.posts.index') }}">Posts</a>
                         </li>
                         @endAuth
                     </ul>
